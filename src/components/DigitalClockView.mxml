@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Group xmlns:fx="http://ns.adobe.com/mxml/2009" 
+		 xmlns:s="library://ns.adobe.com/flex/spark" 
+		 xmlns:mx="library://ns.adobe.com/flex/mx" 
+		 width="100%" height="100%">
+	
+	<fx:Script>
+		<![CDATA[
+			import models.Model;
+
+			[Bindable]
+			public var hours:Number;
+			[Bindable]
+			public var minutes:Number;
+			[Bindable]
+			public var seconds:Number;
+			
+			public var model:Model;
+			
+			public function twoDigits(value:Number):String {
+				var newValue:String = value.toString();
+				
+				if (newValue.length < 2) return "0" + newValue;
+				else return newValue;
+				
+			}
+
+		]]>
+	</fx:Script>
+	
+	<s:HGroup height="100%" width="100%" x="50" y="50" >
+		
+		
+		<s:SkinnableContainer skinClass="skins.clockSkin" width="100" height="100">
+			<s:Label styleName="clockValue"
+					 text="{twoDigits(hours)}" height="100%" width="100%" 
+					 fontSize="80" 
+					 verticalAlign="middle" 
+					 textAlign="center"
+					 top="13">
+			</s:Label>
+			<s:Rect width="100" height="4" top="48">
+				<s:fill>
+					<s:SolidColor color="#ffffff" />
+				</s:fill>
+			</s:Rect>
+		</s:SkinnableContainer>	
+		
+		<s:Rect width="5" height="100"/>
+		
+		<s:SkinnableContainer skinClass="skins.clockSkin" width="100" height="100">
+			<s:Label styleName="clockValue"
+					 text="{twoDigits(minutes)}" height="100%" width="100%" 
+					 fontSize="80" 
+					 verticalAlign="middle" 
+					 textAlign="center"
+					 top="13">
+			</s:Label>
+			<s:Rect width="100" height="4" top="48">
+				<s:fill>
+					<s:SolidColor color="#ffffff" />
+				</s:fill>
+			</s:Rect>
+		</s:SkinnableContainer>	
+		
+		<s:Rect width="5" height="100"/>
+		
+		<s:SkinnableContainer skinClass="skins.clockSkin" width="100" height="100">
+			<s:Label styleName="clockValue"
+					 text="{twoDigits(seconds)}" height="100%" width="100%" 
+					 fontSize="80" 
+					 verticalAlign="middle" 
+					 textAlign="center"
+					 top="13">
+			</s:Label>
+			<s:Rect width="100" height="4" top="48">
+				<s:fill>
+					<s:SolidColor color="#ffffff" />
+				</s:fill>
+			</s:Rect>
+		</s:SkinnableContainer>	
+
+	</s:HGroup>
+	
+</s:Group>

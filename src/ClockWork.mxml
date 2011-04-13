@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Application xmlns:fx="http://ns.adobe.com/mxml/2009" 
+			   xmlns:s="library://ns.adobe.com/flex/spark" 
+			   xmlns:mx="library://ns.adobe.com/flex/mx" minWidth="955" minHeight="600" xmlns:components="components.*">
+	<fx:Script>
+		<![CDATA[
+			import models.Model;
+			
+			[Bindable]
+			public var clockModel:Model = new Model();
+			
+			public function addOneHourHandler():void {
+				clockModel.timerSetNew += 1;
+			}
+			
+			public function removeOneHourHandler():void {
+				clockModel.timerSetNew -=1;
+			}
+		]]>
+	</fx:Script>
+	
+	<fx:Style source="skins/styles.css"/>
+	
+	<s:VGroup>
+
+		<s:Button label="+" width="30" height="30" click="addOneHourHandler()"/>
+		<s:Button label="-" width="30" height="30" click="removeOneHourHandler()"/>
+		
+		<components:DigitalClockView hours="{clockModel.hours}" 
+									 minutes="{clockModel.minutes}"
+									 seconds="{clockModel.seconds}" />
+			
+		<components:AnalogClockView hours="{clockModel.hours}" 
+									minutes="{clockModel.minutes}"
+									seconds="{clockModel.seconds}" />
+		
+	</s:VGroup>
+</s:Application>
